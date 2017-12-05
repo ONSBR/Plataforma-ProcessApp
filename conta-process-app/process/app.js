@@ -1,3 +1,7 @@
-var { ReadProcessMemory } = require('./ReadProcessMemory');
+var { ProcessMemory } = require('./ProcessMemory');
+var Contexto = require('plataforma-core/Contexto');
 
-var json = ReadProcessMemory.readFile(process.argv[2]);
+var contexto = new Contexto("", "", "", Date.now());
+
+ProcessMemory.writeFileSync(1, JSON.stringify(contexto));
+// var json = ReadProcessMemory.readFileSync(process.argv[2]);

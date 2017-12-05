@@ -1,0 +1,19 @@
+{
+  "name": "plataforma-processapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ONSBR/Plataforma-ProcessApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ONSBR/Plataforma-ProcessApp/issues"
+  },
+  "homepage": "https://github.com/ONSBR/Plataforma-ProcessApp#readme"
+}
