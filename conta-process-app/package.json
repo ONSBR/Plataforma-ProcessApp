@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "plataforma-core": "git+https://github.com/ONSBR/Plataforma-core"
+    "js-yaml": "^3.10.0",
+    "plataforma-core": "git+https://github.com/ONSBR/Plataforma-core",
+    "plataforma-process-memory": "https://github.com/ONSBR/Plataforma-ProcessMemory",
+    "handlebars": "^4.0.11"
   }
 }
