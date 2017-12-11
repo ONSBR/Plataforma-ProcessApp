@@ -18,17 +18,18 @@ class Mapeamento {
 
 var source = fs.readFileSync("mapa/entidade.tmpl").toString();
 var template = handlebars.compile(source);
-var obj = { "nomeDaEntidade":Teste.name, "campos": getListaDeCampos()};        
+handlebars.registerHelper('campos', function(options) {
+    return getListaDeCampos();
+  });
+var obj = { "nomeDaEntidade":Teste.name, "campos":getListaDeCampos()};        
 var compiled = template(obj);
 console.log(compiled);
 
-console.log(Object.getOwnPropertyNames(Teste));
+// console.log(Object.getOwnPropertyNames(Teste));
 
 function getListaDeCampos(){
-    return {
-        campos: [
-          {campoOrigem: "teste1", campoDestino: "campoDestino", tipoDoCampo: "string"},
-          {campoOrigem: "teste2", campoDestino: "campoDestino", tipoDoCampo: "string"},
-        ]
-    }
+    return [
+        {campoOrigem: "origem", campoDestino: "destino", tipoDoCampo: "string"},
+        {campoOrigem: "origem", campoDestino: "destino", tipoDoCampo: "string"}
+    ]; 
 }
