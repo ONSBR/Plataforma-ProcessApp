@@ -70,4 +70,9 @@ typings/
 !.vscode/extensions.json
 .history
 
+#Plataforma
+*/dominio/*.js
+!.vscode/*.js
+
+
 # End of https://www.gitignore.io/api/node,visualstudiocode
