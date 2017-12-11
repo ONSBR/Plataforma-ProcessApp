@@ -1,6 +1,7 @@
 var fs = require("fs");
 var yaml = require("js-yaml");
 var handlebars = require('handlebars');
+var config = require("./config");
 
 function geraEntidade(nomeDoYaml) {
     console.log("Gerando entidade a partir do yaml=" + nomeDoYaml);
@@ -11,11 +12,11 @@ function geraEntidade(nomeDoYaml) {
 }
 
 function geraJs(nomeDoYaml, campos) {
-    var source = fs.readFileSync("dominio/dominio.tmpl").toString();
+    var source = fs.readFileSync(config.diretorioDeDominio + "/dominio.tmpl").toString();
     var template = handlebars.compile(source);
     var objTemplate = { "nomeDaClasse":nomeDoYaml, "campos":getListaDeCampos(campos)}; 
     var compiled = template(objTemplate);
-    fs.writeFileSync("dominio/" + nomeDoYaml + ".js", compiled);
+    fs.writeFileSync(config.diretorioDeDominio + "/" + nomeDoYaml + ".js", compiled);
 }
 
 function getListaDeCampos(campos) {
@@ -27,7 +28,7 @@ function getListaDeCampos(campos) {
 }
 
 function lerYaml(nomeDoYaml) {
-    let yamlFile = fs.readFileSync("mapa/"+ nomeDoYaml +".yaml");
+    let yamlFile = fs.readFileSync(config.diretorioDeMapas + "/"+ nomeDoYaml +".yaml");
     return yamlFile;
 }
 
