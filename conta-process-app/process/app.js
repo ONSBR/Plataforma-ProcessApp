@@ -1,7 +1,27 @@
-var processId = process.argv[2];
+var fs = require("fs");
+var yaml = require("js-yaml");
 
-console.log("Process Id")
+let nomeDoYaml = process.argv[2];
+console.log("Gerando entidade a partir do yaml=" + nomeDoYaml);
+let yamlFile = lerYaml(nomeDoYaml);
+let yamlMapper = yaml.safeLoad(yamlFile);
 
-function getContexto(processId) {
+var campos = eval("yamlMapper."+ nomeDoYaml + ".fields");
 
+console.log("nome da entidade " + nomeDoYaml);
+console.log("nome dos campos=")
+for (const campo in campos) {
+    console.log(campo)
+}
+
+function lerYaml(nomeDoYaml) {
+    let yamlFile = fs.readFileSync("mapa/"+ nomeDoYaml +".yaml");
+    console.log("===========");
+    console.log(yamlFile.toString());
+    console.log("===========");
+    return yamlFile;
+}
+
+function createJsClass() {
+    
 }

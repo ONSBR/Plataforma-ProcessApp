@@ -8,28 +8,26 @@ class Teste {
     }
 }
 
-class Mapeamento {
-    constructor(campoOrigem, campoDestino, tipoDoCampo) {
-        this.campoOrigem = campoOrigem;
-        this.campoDestino = campoDestino;
-        this.tipoDoCampo = tipoDoCampo; 
-    }
+geraTemplateDaEntidade("Teste")
+
+function geraTemplateDaEntidade(nomeDaEntidade) {
+    let source = fs.readFileSync("mapa/entidade.tmpl").toString();
+    let template = handlebars.compile(source);
+    handlebars.registerHelper('campos', function(options) {
+        return getListaDeCampos();
+      });
+    let obj = { "nomeDaEntidade":nomeDaEntidade, "campos":getListaDeCampos(nomeDaEntidade)};        
+    let compiled = template(obj);
+    console.log(compiled);
 }
 
-var source = fs.readFileSync("mapa/entidade.tmpl").toString();
-var template = handlebars.compile(source);
-handlebars.registerHelper('campos', function(options) {
-    return getListaDeCampos();
-  });
-var obj = { "nomeDaEntidade":Teste.name, "campos":getListaDeCampos()};        
-var compiled = template(obj);
-console.log(compiled);
+function getListaDeCampos(nomeDaEntidade) {
+    let listaDeAtributos = Object.getOwnPropertyNames(eval("new " + nomeDaEntidade +"()"));
+    let listaDoMapeamento = [];
 
-// console.log(Object.getOwnPropertyNames(Teste));
+    for (i = 0; i < listaDeAtributos.length; i++) { 
+        listaDoMapeamento.push({campoOrigem: listaDeAtributos[i], campoDestino: "destino", tipoDoCampo: "string"});
+    }
 
-function getListaDeCampos(){
-    return [
-        {campoOrigem: "origem", campoDestino: "destino", tipoDoCampo: "string"},
-        {campoOrigem: "origem", campoDestino: "destino", tipoDoCampo: "string"}
-    ]; 
+    return listaDoMapeamento; 
 }
