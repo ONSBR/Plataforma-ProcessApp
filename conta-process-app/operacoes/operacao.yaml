@@ -1,0 +1,8 @@
+operacao: 
+  - operacoes: 
+      nome: cadastra-conta
+      caminhoDoArquivo: cadastraConta.js
+      metodo: cadastraConta 
+      eventos-entrada:
+        -account.put
+      eventos-saida:
