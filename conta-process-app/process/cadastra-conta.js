@@ -1,5 +1,5 @@
 var Evento = require("../../../Plataforma-core/Evento");
-var EventCatalog = require("../../../Plataforma-ProcessApp/conta-process-app/metadados/EventCatalog");
+var EventCatalog = require("../metadados/EventCatalog");
 
 function insereConta(contexto) {
     
