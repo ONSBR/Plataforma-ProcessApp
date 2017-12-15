@@ -3,8 +3,9 @@ var EventCatalog = require("../metadados/EventCatalog");
 
 function insereConta(contexto) {
     
-    console.log(contexto);
+    console.log("Contexto = " + contexto);
     contexto.dataSet.save(contexto.evento.payload);
+    console.log(contexto.evento.payload);
 
     contexto.eventoSaida = new Evento(
         EventCatalog.account_saved, 
