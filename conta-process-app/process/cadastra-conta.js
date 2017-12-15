@@ -8,7 +8,8 @@ function insereConta(contexto) {
 
     contexto.eventoSaida = new Evento(
         EventCatalog.account_saved, 
-        contexto.evento.processName, 
+        contexto.evento.processName,
+        new Date(), 
         contexto.instancia, null, 
         contexto.evento.payload, 
         contexto.evento.origem
