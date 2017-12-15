@@ -3,8 +3,9 @@ var EventCatalog = require("../../../Plataforma-ProcessApp/conta-process-app/met
 
 function insereConta(contexto) {
     
-    console.log(contexto);
+    console.log("Contexto = " + contexto);
     contexto.dataSet.save(contexto.evento.payload);
+    console.log(contexto.evento.payload);
 
     contexto.eventoSaida = new Evento(
         EventCatalog.account_saved, 
