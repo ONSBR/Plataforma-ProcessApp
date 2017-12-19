@@ -4,7 +4,7 @@ var EventCatalog = require("../metadados/EventCatalog");
 function insereConta(contexto) {
     
     console.log("Contexto = " + contexto);
-    contexto.dataSet.save(contexto.evento.payload);
+    contexto.dataSet.save(getClient(contexto.evento.payload), Client.name);
     console.log(contexto.evento.payload);
 
     contexto.eventoSaida = new Evento(
@@ -16,5 +16,10 @@ function insereConta(contexto) {
         contexto.evento.origem
     );
 }
+
+function getClient(clientName) {
+    return [{ "nome": clientName, "_metadata": { type: "cliente", changeTrack: "create" } }];
+}
+
 
 module.exports.insereConta = insereConta
