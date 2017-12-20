@@ -2,9 +2,8 @@ var Evento = require("../../../Plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
 
 function insereConta(contexto) {
-    
-    console.log("Contexto = " + contexto);
-    contexto.dataSet.save(getClient(contexto.evento.payload), Client.name);
+    //FIXME Criar classe Cliente
+    contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
     console.log(contexto.evento.payload);
 
     contexto.eventoSaida = new Evento(
@@ -17,8 +16,8 @@ function insereConta(contexto) {
     );
 }
 
-function getClient(clientName) {
-    return [{ "nome": clientName, "_metadata": { type: "cliente", changeTrack: "create" } }];
+function getClient(account) {
+    return '[{ "nome":' + account.titular + ', "_metadata": { "type": "cliente", "changeTrack": "create" } }]';
 }
 
 
