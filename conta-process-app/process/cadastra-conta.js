@@ -17,7 +17,7 @@ function insereConta(contexto) {
 }
 
 function getClient(account) {
-    return '[{ "nome":' + account.titular + ', "_metadata": { "type": "cliente", "changeTrack": "create" } }]';
+    return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
 }
 
 
