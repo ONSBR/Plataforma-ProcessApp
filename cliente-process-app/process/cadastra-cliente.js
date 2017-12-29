@@ -1,4 +1,4 @@
-var Evento = require("../../../Plataforma-core/Evento");
+var Evento = require("plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
 
 function insereCliente(contexto) {
