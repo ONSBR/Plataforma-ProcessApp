@@ -16,14 +16,11 @@ function transfereConta(contexto) {
     contexto.dataSet.save(getTransfer(contexto.evento.payload), "Transfer");
     console.log(contexto.evento.payload);
 
-    contexto.eventoSaida = new Evento(
-        EventCatalog.transfer_confirmation, 
-        contexto.evento.processName,
-        new Date(), 
-        contexto.instancia, null, 
-        contexto.evento.payload, 
-        contexto.evento.origem
-    );
+    var eventoSaida = new Evento();
+    eventoSaida.name = EventCatalog.transfer_confirmation;
+    eventoSaida.payload = contexto.evento.payload;
+
+    contexto.eventoSaida = eventoSaida;
 }
 
 function getTransfer(account) {

@@ -6,14 +6,11 @@ function insereConta(contexto) {
     contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
     console.log(contexto.evento.payload);
 
-    contexto.eventoSaida = new Evento(
-        EventCatalog.account_saved, 
-        contexto.evento.processName,
-        new Date(), 
-        contexto.instancia, null, 
-        contexto.evento.payload, 
-        contexto.evento.origem
-    );
+    var eventoSaida = new Evento();
+    eventoSaida.name = EventCatalog.account_saved;
+    eventoSaida.payload = contexto.evento.payload;
+
+    contexto.eventoSaida = eventoSaida;
 }
 
 function getClient(account) {
