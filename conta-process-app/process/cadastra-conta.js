@@ -3,7 +3,7 @@ var EventCatalog = require("../metadados/EventCatalog");
 
 function insereConta(contexto) {
     //FIXME Criar classe Cliente
-    contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
+    contexto.dataSet.save(getAccount(contexto.evento.payload), "Client");
     console.log(contexto.evento.payload);
 
     var eventoSaida = new Evento();
@@ -13,7 +13,7 @@ function insereConta(contexto) {
     contexto.eventoSaida = eventoSaida;
 }
 
-function getClient(account) {
+function getAccount(account) {
     return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
 }
 

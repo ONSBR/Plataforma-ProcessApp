@@ -23,8 +23,11 @@ function transfereConta(contexto) {
     contexto.eventoSaida = eventoSaida;
 }
 
-function getTransfer(account) {
-    return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
+function getTransfer(transfer) {
+    return '[{ "contaOrigem":' + transfer.contaOrigem.id + 
+    ',"contaDestino":' + transfer.contaDestino.id + 
+    ',"tipoOperacao":"transfer"' + 
+    ', "_metadata": { "type": "transferencia", "changeTrack": "create" } }]';
 }
 
 
