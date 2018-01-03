@@ -26,8 +26,11 @@ function transfereConta(contexto) {
     );
 }
 
-function getTransfer(account) {
-    return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
+function getTransfer(transfer) {
+    return '[{ "contaOrigem":' + transfer.contaOrigem + 
+    '",contaDestino":' + transfer.contaDestino + 
+    '",tipoOperacao":transfer' + 
+    ', "_metadata": { "type": "transferencia", "changeTrack": "create" } }]';
 }
 
 
