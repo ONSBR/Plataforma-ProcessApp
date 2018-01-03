@@ -4,14 +4,11 @@ var EventCatalog = require("../metadados/EventCatalog");
 function insereCliente(contexto) {
     contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
 
-    contexto.eventoSaida = new Evento(
-        EventCatalog.account_saved, 
-        contexto.evento.processName,
-        new Date(), 
-        contexto.instancia, null, 
-        contexto.evento.payload, 
-        contexto.evento.origem
-    );
+    var eventoSaida = new Evento();
+    eventoSaida.name = EventCatalog.account_saved;
+    eventoSaida.payload = contexto.evento.payload;
+
+    contexto.eventoSaida = eventoSaida;
 }
 
 function getClient(cliente) {
