@@ -28,8 +28,8 @@ function transfereConta(contexto) {
 
 function getTransfer(transfer) {
     return '[{ "contaOrigem":' + transfer.contaOrigem.id + 
-    '",contaDestino":' + transfer.contaDestino.id + 
-    '",tipoOperacao":transfer' + 
+    ',"contaDestino":' + transfer.contaDestino.id + 
+    ',"tipoOperacao":transfer' + 
     ', "_metadata": { "type": "transferencia", "changeTrack": "create" } }]';
 }
 
