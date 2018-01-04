@@ -12,7 +12,7 @@ function insereCliente(contexto) {
 }
 
 function getClient(cliente) {
-    return '[{ "nome":' + cliente.titular + ', "_metadata": { "type": "cliente", "changeTrack": "create" } }]';
+    return '[{ "nome":"' + cliente.titular + '", "_metadata": { "type": "cliente", "changeTrack": "create" } }]';
 }
 
 module.exports.insereCliente = insereCliente
