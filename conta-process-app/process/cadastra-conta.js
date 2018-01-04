@@ -13,8 +13,9 @@ function insereConta(contexto) {
 }
 
 function getAccount(account) {
-    return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
+    return '[{"saldo":' + account.saldo + 
+            ',"titular":' + account.titular +
+            ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
 }
-
 
 module.exports.insereConta = insereConta
