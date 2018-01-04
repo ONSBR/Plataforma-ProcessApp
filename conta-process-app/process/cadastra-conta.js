@@ -2,7 +2,6 @@ var Evento = require("plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
 
 function insereConta(contexto) {
-    //FIXME Criar classe Cliente
     contexto.dataSet.save(getAccount(contexto.evento.payload), "Client");
     console.log(contexto.evento.payload);
 

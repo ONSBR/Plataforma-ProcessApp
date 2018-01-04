@@ -5,9 +5,9 @@ function insereCliente(contexto) {
     contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
 
     var eventoSaida = new Evento();
-    eventoSaida.name = EventCatalog.account_saved;
+    eventoSaida.name = EventCatalog.client_saved;
     eventoSaida.payload = contexto.evento.payload;
-
+    
     contexto.eventoSaida = eventoSaida;
 }
 
