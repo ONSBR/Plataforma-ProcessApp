@@ -1,20 +1,11 @@
 var Evento = require("plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
+var Client = require('node-rest-client').Client;
 
 function transfereConta(contexto) {
-    
-    var contaOrigem = contexto.evento.payload.contaOrigem;
-    var contaDestino = contexto.evento.payload.contaDestino;
-    var valorTransferencia = contexto.evento.payload.operacao.valorTransferencia;
-    
-    contaOrigem.saldo = contaOrigem.saldo - valorTransferencia;
-    contaDestino.saldo = contaDestino.saldo + valorTransferencia
-    
-    contexto.evento.payload.contaOrigem = contaOrigem;
-    contexto.evento.payload.contaDestino = contaDestino;
-
     contexto.dataSet.save(getTransfer(contexto.evento.payload), "Transfer");
-    console.log(contexto.evento.payload);
+    contexto.dataSet.save(updateOriginAccount(contexto.evento.payload), "Transfer");
+    contexto.dataSet.save(updateDestinationAccount(contexto.evento.payload), "Transfer");
 
     var eventoSaida = new Evento();
     eventoSaida.name = EventCatalog.transfer_confirmation;
@@ -23,12 +14,28 @@ function transfereConta(contexto) {
     contexto.eventoSaida = eventoSaida;
 }
 
-function getTransfer(transfer) {
-    return '[{ "contaOrigem":' + transfer.contaOrigem.id + 
-    ',"contaDestino":' + transfer.contaDestino.id + 
+function getTransfer(payload) {
+    return '[{ "contaOrigem":"' + payload.operacao.contaOrigem.id + 
+    '","contaDestino":"' + payload.operacao.contaDestino.id +
+    '","valorTransferencia":' + payload.operacao.valorTransferencia +  
     ',"tipoOperacao":"transfer"' + 
     ', "_metadata": { "type": "transferencia", "changeTrack": "create" } }]';
 }
 
+function updateOriginAccount(payload) { 
+    const contaOrigem = payload.operacao.contaOrigem;
 
+    contaOrigem.saldo = contaOrigem.saldo - payload.operacao.valorTransferencia; 
+    return '[{"id":"' + contaOrigem.id + 
+                '","saldo":"' + contaOrigem.saldo + 
+                        '", "_metadata": { "type": "conta", "changeTrack": "update" } }]';
+}
+
+function updateDestinationAccount(payload) { 
+    const contaDestino = payload.operacao.contaDestino;
+    contaDestino.saldo = contaDestino.saldo + payload.operacao.valorTransferencia; 
+    return '[{"id":"' + contaDestino.id + 
+                '","saldo":"' + contaDestino.saldo + 
+                        '", "_metadata": { "type": "conta", "changeTrack": "update" } }]';
+}
 module.exports.transfereConta = transfereConta
