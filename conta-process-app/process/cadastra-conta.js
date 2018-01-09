@@ -1,24 +1,19 @@
-var Evento = require("../../../Plataforma-core/Evento");
+var Evento = require("plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
+var Conta = require("./Conta");
 
 function insereConta(contexto) {
-    //FIXME Criar classe Cliente
-    contexto.dataSet.save(getClient(contexto.evento.payload), "Client");
-    console.log(contexto.evento.payload);
+    contexto.dataSet.save(getAccount(contexto.evento.payload), Conta.name);
 
-    contexto.eventoSaida = new Evento(
-        EventCatalog.account_saved, 
-        contexto.evento.processName,
-        new Date(), 
-        contexto.instancia, null, 
-        contexto.evento.payload, 
-        contexto.evento.origem
-    );
+    var eventoSaida = new Evento();
+    eventoSaida.name = EventCatalog.account_saved;
+    eventoSaida.payload = contexto.evento.payload;
+
+    contexto.eventoSaida = eventoSaida;
 }
 
-function getClient(account) {
-    return '[{ "saldo":' + account.saldo + ', "_metadata": { "type": "conta", "changeTrack": "create" } }]';
+function getAccount(account) {
+    return new Conta(account.titular, account.saldo);
 }
-
 
 module.exports.insereConta = insereConta
