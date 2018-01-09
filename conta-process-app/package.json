@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "./process/app.js",
-  "scripts": {
-    "test": "test"
-  },
+  "scripts": { "test": "jasmine" },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
 }
