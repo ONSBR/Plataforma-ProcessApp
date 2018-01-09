@@ -7,12 +7,6 @@ class Conta extends PlatformEntity {
         this.titular = titular;
         this.saldo = saldo;
     }
-
-    toJSON() {
-        return '[{"titular":"' + this.titular +
-            '","saldo":' + this.saldo + ',"_metadata":{"type":"' + this.entityMetadata.type +
-            '","changeTrack":"' + this.entityMetadata.changeTrack + '"}}]';
-    }
 }
 
 module.exports = Conta;

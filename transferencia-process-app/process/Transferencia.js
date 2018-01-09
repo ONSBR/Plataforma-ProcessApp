@@ -8,15 +8,6 @@ class Transferencia extends PlatformEntity {
         this.contaDestino = contaDestino;
         this.valorTransferencia = valorTransferencia;
     }
-
-    toJSON(payload) {
-        return '[{ "contaOrigem":"' + this.contaOrigem.id +
-            '","contaDestino":"' + this.contaDestino.id +
-            '","valorTransferencia":' + this.valorTransferencia +
-            ',"tipoOperacao":"transfer"' +
-            ', "_metadata": { "type": "' + this.entityMetadata.type + '", "changeTrack": "'
-            + this.entityMetadata.changeTrack + '" } }]';
-    }
 }
 
 module.exports = Transferencia;

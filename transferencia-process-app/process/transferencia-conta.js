@@ -17,8 +17,8 @@ function transfereConta(contexto) {
 }
 
 function getTransferencia(payload) {
-    return new Transferencia(payload.operacao.contaOrigem,
-        payload.operacao.contaDestino, payload.operacao.valorTransferencia);
+    return new Transferencia(payload.operacao.contaOrigem.id,
+        payload.operacao.contaDestino.id, payload.operacao.valorTransferencia);
 }
 
 function getOriginAccount(payload) {
