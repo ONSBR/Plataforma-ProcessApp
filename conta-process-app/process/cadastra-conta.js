@@ -1,9 +1,9 @@
 var Evento = require("plataforma-core/Evento");
 var EventCatalog = require("../metadados/EventCatalog");
+var Conta = require("./Conta");
 
 function insereConta(contexto) {
-    contexto.dataSet.save(getAccount(contexto.evento.payload), "Client");
-    console.log(contexto.evento.payload);
+    contexto.dataSet.save(getAccount(contexto.evento.payload), Conta.name);
 
     var eventoSaida = new Evento();
     eventoSaida.name = EventCatalog.account_saved;
@@ -13,9 +13,7 @@ function insereConta(contexto) {
 }
 
 function getAccount(account) {
-    return '[{"saldo":' + account.saldo + 
-            ',"titular":"' + account.titular + 
-            '", "_metadata": { "type": "conta", "changeTrack": "create" } }]';
+    return new Conta(account.titular, account.saldo);
 }
 
 module.exports.insereConta = insereConta
