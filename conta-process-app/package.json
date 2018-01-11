@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "plataforma-sdk": "git+https://github.com/ONSBR/Plataforma-SDK"
+    "plataforma-sdk": "git+https://github.com/ONSBR/Plataforma-SDK#master"
   },
   "devDependencies": {
     "jasmine": "^2.8.0"
