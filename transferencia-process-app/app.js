@@ -1,12 +1,13 @@
-var CadastraContaProcessApp = require("./TransferenciaContaProcessApp");
+var TransferenciaContaProcessApp = require("./TransferenciaContaProcessApp");
 
-const processInstanceId = process.argv[2];
-const operation = process.argv[3];
+const processName = process.argv[2];
+const processInstanceId = process.argv[3];
+const operation = process.argv[4];
 
 start();
 
 function start() {
-    let transferenciaContaProcessApp = new TransferenciaContaProcessApp(processInstanceId, operation);
+    let transferenciaContaProcessApp = new TransferenciaContaProcessApp(processName, processInstanceId, operation);
     transferenciaContaProcessApp.startProcess();
 }
 

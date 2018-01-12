@@ -3,8 +3,8 @@ var cadastraConta = require("./process/cadastra-conta");
 
 class CadastraContaProcessApp extends ProcessApp {
 
-    constructor(processInstanceId, operation) {
-        super(processInstanceId, operation);
+    constructor(processName, processInstanceId, operation) {
+        super(processName, processInstanceId, operation);
         this.lookupTable = {
             "insereConta": cadastraConta.insereConta
         };

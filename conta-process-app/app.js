@@ -1,12 +1,13 @@
 var CadastraContaProcessApp = require("./CadastraContaProcessApp");
 
-const processInstanceId = process.argv[2];
-const operation = process.argv[3];
+const processName = process.argv[2];
+const processInstanceId = process.argv[3];
+const operation = process.argv[4];
 
 start();
 
 function start() {
-    let cadastraContaProcessApp = new CadastraContaProcessApp(processInstanceId, operation);
+    let cadastraContaProcessApp = new CadastraContaProcessApp(processName, processInstanceId, operation);
     cadastraContaProcessApp.startProcess();
 }
 
