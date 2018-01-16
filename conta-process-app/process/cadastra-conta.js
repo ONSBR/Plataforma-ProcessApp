@@ -3,7 +3,8 @@ var EventCatalog = require("../metadados/EventCatalog");
 var Conta = require("./Conta");
 
 function insereConta(contexto) {
-    contexto.dataSet.save(getAccount(contexto.evento.payload), Conta.name);
+    
+    contexto.dataSet.insert(getAccount(contexto.evento.payload), Conta.name);
 
     var eventoSaida = new Evento();
     eventoSaida.name = EventCatalog.account_saved;
