@@ -37,8 +37,8 @@ describe("Transferência Conta", function() {
 
         operacao.contaOrigem = {};
         operacao.contaDestino = {};
-        operacao.contaOrigem.id = 1;
-        operacao.contaDestino.id = 2;
+        operacao.contaOrigem.id = idContaOrigem;
+        operacao.contaDestino.id = idContaDestino;
         operacao.valorTransferencia = valorTransacao;
 
         transferenciaConta.transfereConta(contexto);
