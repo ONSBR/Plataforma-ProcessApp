@@ -1,0 +1,8 @@
+processo: transferencia-conta
+operacoes:
+  - operacao: transfereConta
+    container: cadastra-conta
+    metodo: insereConta 
+    eventos-entrada:
+      -account.put
+    eventos-saida:
